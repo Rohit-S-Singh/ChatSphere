@@ -1,4 +1,4 @@
-import ChatCard from "./private/ChatCard";
+import ChatCard from "../components/private/chatCard"
 import ConversationCard from "./private/ConversationCard";
 import DummyChatCard from "./helpers/DummyChatCard";
 import GroupChatCard from "./group/GroupChatCard";
