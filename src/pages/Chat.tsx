@@ -328,7 +328,7 @@ export default function Chat() {
 
 
     return (
-        <div className={`w-full  min-h-screen ${theme === 'on' ? 'bg-gray-50' : "bg-slate-950"} flex items-center justify-center`}>
+        <div className={`w-full  min-h-screen ${theme === 'on' ? 'bg-gray-50' : "bg-slate-950"} flex items-center mb-10 mt-10 justify-center`}>
 
             <label className={`swap z-50  swap-rotate fixed lg:top-5  right-10 top-3  ${theme === 'on' ? 'text-black' : "text-white"} `}>
 
@@ -439,7 +439,6 @@ export default function Chat() {
 
             </div>
             <ToastContainer />
-            <p className={`fixed text-sm lg:text-base bottom-2 lg:bottom-5 text-center  ${theme === 'on' ? 'text-black' : "text-white"} `}>Created by Rohit</p>
         </div>
     )
 }

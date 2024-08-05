@@ -9,9 +9,10 @@ import { useSelector } from 'react-redux';
 import { RootState } from './store/store';
 
 
+const backend_url = "https://system-backend-production-1e10.up.railway.app/api";
 
 
-export const socket = io("http://localhost:8000")
+export const socket = io(backend_url)
 
 function App() {
   const user = useSelector((state: RootState) => state.User.user);
@@ -22,12 +23,15 @@ function App() {
 
 
   return (
+    <>
     <Routes>
       <Route element={<Login />} path="/" />
       <Route element={<Chat />} path="/chat" />
       <Route element={<Register />} path="/register-account" />
       <Route element={<NotFound />} path="/*" />
     </Routes>
+    <p className={` text-sm lg:text-base bottom-2 lg:bottom-5 text-center`}>Created by Rohit with ❤️</p>
+    </>
   )
 }
 
