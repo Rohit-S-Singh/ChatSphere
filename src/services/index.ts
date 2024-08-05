@@ -1,6 +1,9 @@
+const backend_url = "https://system-backend-production-1e10.up.railway.app/api";
+// const backend_url = "http://localhost:8000/api";
+
 export const login_user = async (formData: unknown) => {
     try {
-        const res = await fetch('http://localhost:8000/api/login-user', {
+        const res = await fetch(`${backend_url}/login-user`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -11,15 +14,13 @@ export const login_user = async (formData: unknown) => {
         const data = await res.json();
         return data;
     } catch (error: any) {
-        console.log("🚀 ~ file: index.ts:14 ~ constlogin_user= ~ error:", error)
+        console.log("🚀 ~ file: index.ts:14 ~ constlogin_user= ~ error:", error);
     }
-
-
 }
 
 export const register_user = async (formData: unknown) => {
     try {
-        const res = await fetch('http://localhost:8000/api/register-user', {
+        const res = await fetch(`${backend_url}/register-user`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -30,67 +31,60 @@ export const register_user = async (formData: unknown) => {
         const data = await res.json();
         return data;
     } catch (error: any) {
-        console.log("🚀 ~ file: index.ts:33 ~ constregister_user= ~ error:", error)
+        console.log("🚀 ~ file: index.ts:33 ~ constregister_user= ~ error:", error);
     }
 }
 
-
-export const get_all_users = async (id: unknown , token  : string) => {
-    
+export const get_all_users = async (id: unknown, token: string) => {
     try {
-        const res = await fetch(`http://localhost:8000/api/get-all-users?id=${id}`, {
+        const res = await fetch(`${backend_url}/get-all-users?id=${id}`, {
             method: 'GET',
-            headers : {
+            headers: {
                 'authorization': `Bearer ${token}`
             }
         });
         const data = await res.json();
         return data;
     } catch (error: any) {
-        console.log("🚀 ~ file: index.ts:46 ~ constget_all_users= ~ error:", error)
+        console.log("🚀 ~ file: index.ts:46 ~ constget_all_users= ~ error:", error);
     }
 }
 
-
-export const getChatData = async (data: any , token  : string) => {
-   
+export const getChatData = async (data: any, token: string) => {
     const { senderId, receiverId } = data;
     try {
-        const res = await fetch(`http://localhost:8000/api/get-user-chat?senderId=${senderId}&receiverId=${receiverId}`, {
+        const res = await fetch(`${backend_url}/get-user-chat?senderId=${senderId}&receiverId=${receiverId}`, {
             method: 'GET',
-            headers : {
+            headers: {
                 'authorization': `Bearer ${token}`
             },
         });
         const data = await res.json();
         return data;
     } catch (error: any) {
-        console.log("🚀 ~ file: index.ts:60 ~ getChatData ~ error:", error)
+        console.log("🚀 ~ file: index.ts:60 ~ getChatData ~ error:", error);
     }
 }
-export const getGroupChatData = async (data: any, token  : string) => {
-   
-    const { senderId, receiverId , groupId } = data;
+
+export const getGroupChatData = async (data: any, token: string) => {
+    const { senderId, receiverId, groupId } = data;
     try {
-        const res = await fetch(`http://localhost:8000/api/get-group-chat?senderId=${senderId}&receiverId=${receiverId}&groupId=${groupId}`, {
+        const res = await fetch(`${backend_url}/get-group-chat?senderId=${senderId}&receiverId=${receiverId}&groupId=${groupId}`, {
             method: 'GET',
-            headers : {
+            headers: {
                 'authorization': `Bearer ${token}`
             },
         });
         const data = await res.json();
         return data;
     } catch (error: any) {
-        console.log("🚀 ~ file: index.ts:72 ~ getGroupChatData ~ error:", error)
+        console.log("🚀 ~ file: index.ts:72 ~ getGroupChatData ~ error:", error);
     }
 }
 
-
-export const send_message = async (formData: any , token  : string) => {
-
-
+export const send_message = async (formData: any, token: string) => {
     try {
-        const res = await fetch(`http://localhost:8000/api/send-user-message`, {
+        const res = await fetch(`${backend_url}/send-user-message`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -101,71 +95,63 @@ export const send_message = async (formData: any , token  : string) => {
         const data = await res.json();
         return data;
     } catch (error: any) {
-        console.log("🚀 ~ file: index.ts:90 ~ constsend_message= ~ error:", error)
+        console.log("🚀 ~ file: index.ts:90 ~ constsend_message= ~ error:", error);
         console.log('Error at send message (services) : ', error.message);
     }
 }
 
-
-
-export const create_group  =  async (formData: any , token  : string) => {
+export const create_group = async (formData: any, token: string) => {
     try {
-        const res = await fetch(`http://localhost:8000/api/create-group`, {
+        const res = await fetch(`${backend_url}/create-group`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'authorization': `Bearer ${token}`
             },
             body: JSON.stringify(formData),
-            
         });
         const data = await res.json();
         return data;
     } catch (error: any) {
-        console.log("🚀 ~ file: index.ts:109 ~ constcreate_group= ~ error:", error)
+        console.log("🚀 ~ file: index.ts:109 ~ constcreate_group= ~ error:", error);
     }
 }
 
-
-export const get_user_group  = async (id: any , token  : string) => {
+export const get_user_group = async (id: any, token: string) => {
     try {
-        const res = await fetch(`http://localhost:8000/api/get-user-group?id=${id}`, {
+        const res = await fetch(`${backend_url}/get-user-group?id=${id}`, {
             method: 'GET',
-            headers : {
+            headers: {
                 'authorization': `Bearer ${token}`
             },
         });
         const data = await res.json();
         return data;
     } catch (error: any) {
-        console.log("🚀 ~ file: index.ts:122 ~ constget_user_group= ~ error:", error)
+        console.log("🚀 ~ file: index.ts:122 ~ constget_user_group= ~ error:", error);
     }
 }
 
-
-export const send_group_message = async (formData: any , token  : string) => {
-    
-        try {
-            const res = await fetch(`http://localhost:8000/api/send-group-message`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'authorization': `Bearer ${token}`
-                },
-                body: JSON.stringify(formData)
-            });
-            const data = await res.json();
-            return data;
-        } catch (error: any) {
-            console.log("🚀 ~ file: index.ts:140 ~ constsend_group_message= ~ error:", error)
-        }
+export const send_group_message = async (formData: any, token: string) => {
+    try {
+        const res = await fetch(`${backend_url}/send-group-message`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify(formData)
+        });
+        const data = await res.json();
+        return data;
+    } catch (error: any) {
+        console.log("🚀 ~ file: index.ts:140 ~ constsend_group_message= ~ error:", error);
+    }
 }
 
-
-export const delete_group = async (ownerId  : string, groupId : string, token  : string) => {
-    
+export const delete_group = async (ownerId: string, groupId: string, token: string) => {
     try {
-        const res = await fetch(`http://localhost:8000/api/delete-group?ownerId=${ownerId}&groupId=${groupId}`, {
+        const res = await fetch(`${backend_url}/delete-group?ownerId=${ownerId}&groupId=${groupId}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -175,15 +161,13 @@ export const delete_group = async (ownerId  : string, groupId : string, token  :
         const data = await res.json();
         return data;
     } catch (error: any) {
-       console.log("🚀 ~ file: index.ts:178 ~ const delete_group= ~ error:", error)
+        console.log("🚀 ~ file: index.ts:178 ~ const delete_group= ~ error:", error);
     }
 }
 
-
-export const delete_messages_from_me = async (deletingData : any ,token  : string) => {
-    
+export const delete_messages_from_me = async (deletingData: any, token: string) => {
     try {
-        const res = await fetch(`http://localhost:8000/api/delete-group-message-from-me`, {
+        const res = await fetch(`${backend_url}/delete-group-message-from-me`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -194,6 +178,6 @@ export const delete_messages_from_me = async (deletingData : any ,token  : strin
         const data = await res.json();
         return data;
     } catch (error: any) {
-       console.log("🚀 ~ file: index.ts:178 ~ const delete_group= ~ error:", error)
+        console.log("🚀 ~ file: index.ts:178 ~ const delete_messages_from_me= ~ error:", error);
     }
 }
